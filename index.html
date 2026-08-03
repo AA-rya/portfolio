@@ -96,11 +96,14 @@ h1.display em{font-style:italic; font-weight:400; color:var(--brass-deep);}
 .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:48px;}
 .about-body p{font-size:16.5px; color:var(--ink-soft); max-width:60ch;}
 .about-body p + p{margin-top:16px;}
-.now-box{border-left:2px solid var(--brass); padding-left:20px;}
-.now-title{font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--brass-deep); margin-bottom:14px;}
-.now-item{font-size:14.5px; color:var(--ink-soft); padding:10px 0; border-bottom:1px dashed var(--line);}
-.now-item:last-child{border-bottom:none;}
-.now-item .role{color:var(--ink); font-weight:500;}
+.orbit-wrap{display:flex; align-items:center; justify-content:center;}
+.orbit-svg{width:100%; max-width:340px; height:auto;}
+.orbit-ring{fill:none; stroke:var(--line-strong); stroke-dasharray:3 4;}
+.orbit-line{stroke:var(--brass); stroke-opacity:.4; stroke-width:1;}
+.orbit-dot{fill:var(--paper); stroke:var(--brass); stroke-width:1.5;}
+.orbit-node-label{font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:0.03em; text-transform:uppercase; fill:var(--ink-soft);}
+.orbit-center{fill:var(--panel); stroke:var(--brass); stroke-width:1.5;}
+.orbit-center-text{font-family:'Fraunces',serif; font-size:15px; font-weight:500; fill:var(--ink);}
 @media (max-width:760px){ .about-grid{grid-template-columns:1fr;} }
 
 .project{display:grid; grid-template-columns:80px 1fr; gap:28px; padding:30px 0; border-top:1px solid var(--line);}
@@ -163,12 +166,12 @@ footer.site-footer{padding:40px 0 56px;}
 <div class="page" data-page="home">
   <section class="hero">
     <div class="wrap">
-      <h1 class="display">Builds the systems.<br><em>Underwrites</em> the startups.</h1>
+      <h1 class="display">Hi, I&rsquo;m <em>Advika</em>.</h1>
       <p class="hero-lede">
-        Computer Science + Economics at Duke, concentrating in AI/ML. I split my time between
-        writing infrastructure &mdash; inference servers, consensus schedulers, payments ledgers &mdash;
-        and evaluating other people's, as an <strong>investment analyst</strong> at the Duke Impact
-        Investing Club. Technical depth as the wedge into venture diligence on AI companies.
+        I'm a Computer Science + Economics student at Duke, concentrating in AI/ML. I like building
+        things at the systems level &mdash; inference servers, distributed schedulers, payments infra
+        &mdash; and picking projects that make me learn something new every time. Currently looking
+        for software engineering internships.
       </p>
       <div class="hero-links">
         <button data-nav="work">See the work →</button>
@@ -179,7 +182,7 @@ footer.site-footer{padding:40px 0 56px;}
         <span class="stamp">Duke &rsquo;29</span>
         <span class="stamp">AI/ML Concentration</span>
         <span class="stamp">Woodman Scholar</span>
-        <span class="stamp">VC Diligence</span>
+        <span class="stamp">Open to SWE Internships</span>
       </div>
     </div>
   </section>
@@ -222,7 +225,7 @@ footer.site-footer{padding:40px 0 56px;}
         <button class="teaser-panel" data-nav="about">
           <div class="teaser-num">01</div>
           <div class="teaser-title">About</div>
-          <p class="teaser-desc">CS + Econ at Duke, an investing analyst role, and a nonprofit on the side.</p>
+          <p class="teaser-desc">CS + Econ at Duke, building AI/ML systems, always tinkering with something new.</p>
           <div class="teaser-cta">Read more →</div>
         </button>
         <button class="teaser-panel" data-nav="awards">
@@ -250,22 +253,44 @@ footer.site-footer{padding:40px 0 56px;}
 <div class="page" data-page="about">
   <div class="page-header wrap">
     <div class="eyebrow">01 — About</div>
-    <h1 class="page-title">Two ways of looking at the same problem</h1>
-    <p class="page-lede">Systems builder by training, investor by inclination.</p>
+    <h1 class="page-title">A bit about me</h1>
+    <p class="page-lede">Computer Science + Economics student at Duke, concentrating in AI/ML.</p>
   </div>
   <section>
     <div class="wrap">
       <div class="about-grid">
         <div class="about-body reveal">
-          <p>I'm a Computer Science and Economics student at Duke, concentrating in AI/ML, and a Woodman Scholar. Most of what I build lives at the systems level &mdash; inference serving, distributed consensus, ledgers &mdash; because that's where I've found the most honest signal on whether an AI product is actually solid engineering or just a good demo.</p>
-          <p>That's also the lens I bring to investing. As an analyst at the Duke Impact Investing Club, I look at companies the way I'd review a pull request: what's actually load-bearing, and what's held together with duct tape. I'm not chasing a long-term software engineering career &mdash; I'm using the technical background as a way into venture roles that do real diligence on AI companies.</p>
+          <p>I'm a Computer Science and Economics student at Duke, concentrating in AI/ML, and a Woodman Scholar. Most of what I build lives at the systems level &mdash; inference serving, distributed consensus, ledgers &mdash; because that's where I've found the most honest signal on whether something is actually solid engineering or just a good demo.</p>
           <p>Outside of coursework and the portfolio, I co-founded We Succeed Together, a 501(c)(3) nonprofit.</p>
         </div>
-        <div class="now-box reveal">
-          <div class="now-title">Currently</div>
-          <div class="now-item"><span class="role">Investment Analyst</span> — Duke Impact Investing Club</div>
-          <div class="now-item"><span class="role">Co-founder</span> — We Succeed Together (501(c)(3) nonprofit)</div>
-          <div class="now-item"><span class="role">Student</span> — B.S. CS (AI/ML) + Economics, Duke '29</div>
+        <div class="orbit-wrap reveal">
+          <svg class="orbit-svg" viewBox="0 0 340 340" xmlns="http://www.w3.org/2000/svg">
+            <circle class="orbit-ring" cx="170" cy="170" r="130"/>
+            <line class="orbit-line" x1="170" y1="170" x2="170" y2="40"/>
+            <line class="orbit-line" x1="170" y1="170" x2="282.6" y2="105"/>
+            <line class="orbit-line" x1="170" y1="170" x2="282.6" y2="235"/>
+            <line class="orbit-line" x1="170" y1="170" x2="170" y2="300"/>
+            <line class="orbit-line" x1="170" y1="170" x2="57.4" y2="235"/>
+            <line class="orbit-line" x1="170" y1="170" x2="57.4" y2="105"/>
+
+            <circle class="orbit-dot" cx="170" cy="40" r="6"/>
+            <circle class="orbit-dot" cx="282.6" cy="105" r="6"/>
+            <circle class="orbit-dot" cx="282.6" cy="235" r="6"/>
+            <circle class="orbit-dot" cx="170" cy="300" r="6"/>
+            <circle class="orbit-dot" cx="57.4" cy="235" r="6"/>
+            <circle class="orbit-dot" cx="57.4" cy="105" r="6"/>
+
+            <text class="orbit-node-label" x="170" y="22" text-anchor="middle">Distributed Systems</text>
+            <text class="orbit-node-label" x="296" y="98" text-anchor="start">AI/ML Infra</text>
+            <text class="orbit-node-label" x="296" y="242" text-anchor="start">Cloud &amp; AWS</text>
+            <text class="orbit-node-label" x="170" y="324" text-anchor="middle">Full-Stack</text>
+            <text class="orbit-node-label" x="44" y="242" text-anchor="end">Backend APIs</text>
+            <text class="orbit-node-label" x="44" y="98" text-anchor="end">Systems (C)</text>
+
+            <circle class="orbit-center" cx="170" cy="170" r="52"/>
+            <text class="orbit-center-text" x="170" y="165" text-anchor="middle">CS +</text>
+            <text class="orbit-center-text" x="170" y="185" text-anchor="middle">AI/ML</text>
+          </svg>
         </div>
       </div>
     </div>
@@ -279,8 +304,8 @@ footer.site-footer{padding:40px 0 56px;}
 <div class="page" data-page="work">
   <div class="page-header wrap">
     <div class="eyebrow">02 — Work</div>
-    <h1 class="page-title">Six repositories, one running argument</h1>
-    <p class="page-lede">Each one picks up a piece of infrastructure most AI portfolios skip — consensus, batching, ledgers — not just another RAG demo.</p>
+    <h1 class="page-title">Six repositories</h1>
+    <p class="page-lede">Six projects spanning systems programming, AI infrastructure, and full-stack development.</p>
   </div>
   <section>
     <div class="wrap">
@@ -332,29 +357,29 @@ footer.site-footer{padding:40px 0 56px;}
 <div class="page" data-page="awards">
   <div class="page-header wrap">
     <div class="eyebrow">03 — Awards &amp; Honors</div>
-    <h1 class="page-title">A short audit trail</h1>
+    <h1 class="page-title">Awards &amp; Honors</h1>
   </div>
   <section>
     <div class="wrap">
       <div class="ledger reveal">
-        <div class="ledger-row"><div class="ledger-date">Mar 2023</div><div>
+        <div class="ledger-row"><div class="ledger-date">2025</div><div>
           <div class="ledger-title">National Merit Scholarship Winner</div>
           <div class="ledger-issuer">National Merit Scholarship Corporation</div>
         </div></div>
-        <div class="ledger-row"><div class="ledger-date">&mdash;</div><div>
-          <div class="ledger-title">2× AIME Qualifier</div>
-          <div class="ledger-issuer">Mathematical Association of America</div>
+        <div class="ledger-row"><div class="ledger-date">2025</div><div>
+          <div class="ledger-title">NCWIT Impact Award</div>
+          <div class="ledger-issuer">National Center for Women &amp; Information Technology</div>
         </div></div>
-        <div class="ledger-row"><div class="ledger-date">Jul 2022</div><div>
+        <div class="ledger-row"><div class="ledger-date">2024&ndash;2025</div><div>
           <div class="ledger-title">AP Scholar with Distinction</div>
           <div class="ledger-issuer">The College Board</div>
           <p class="ledger-desc">Awarded to students with an average score of at least 3.5 across all AP Exams taken, and scores of 3 or higher on five or more exams.</p>
         </div></div>
-        <div class="ledger-row"><div class="ledger-date">&mdash;</div><div>
-          <div class="ledger-title">NCWIT Impact Award</div>
-          <div class="ledger-issuer">National Center for Women &amp; Information Technology</div>
+        <div class="ledger-row"><div class="ledger-date">2024 &amp; 2025</div><div>
+          <div class="ledger-title">2× AIME Qualifier</div>
+          <div class="ledger-issuer">Mathematical Association of America</div>
         </div></div>
-        <div class="ledger-row"><div class="ledger-date">&mdash;</div><div>
+        <div class="ledger-row"><div class="ledger-date">2024</div><div>
           <div class="ledger-title">NCWIT Honorable Mention</div>
           <div class="ledger-issuer">National Center for Women &amp; Information Technology</div>
         </div></div>
@@ -378,8 +403,8 @@ footer.site-footer{padding:40px 0 56px;}
         <div class="contact-lede">Open to conversations about AI infrastructure, diligence, or both.</div>
         <div class="contact-list">
           <a href="https://github.com/AA-rya" target="_blank" rel="noopener"><span>GitHub</span><span>AA-rya ↗</span></a>
-          <a href="mailto:you@example.com"><span>Email</span><span>you@example.com ↗</span></a>
-          <a href="#" target="_blank" rel="noopener"><span>LinkedIn</span><span>add link ↗</span></a>
+          <a href="mailto:advika.arya@duke.edu"><span>Email</span><span>advika.arya@duke.edu ↗</span></a>
+          <a href="https://www.linkedin.com/in/advika-arya-14abb1282/" target="_blank" rel="noopener"><span>LinkedIn</span><span>advika-arya ↗</span></a>
         </div>
       </div>
     </div>
