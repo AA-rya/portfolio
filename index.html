@@ -101,11 +101,31 @@ h1.display em{font-style:italic; font-weight:400; color:var(--brass-deep);}
 .exp-row{display:grid; grid-template-columns:1fr 200px; gap:24px; padding:30px 0; border-bottom:1px solid var(--line);}
 .exp-company{font-family:'Fraunces',serif; font-size:21px; font-weight:500;}
 .exp-role{font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.03em; text-transform:uppercase; color:var(--brass-deep); margin:4px 0 12px;}
-.exp-desc{color:var(--ink-soft); font-size:15px; max-width:56ch; margin:0 0 14px;}
+.exp-bullets{margin:0; padding-left:18px; color:var(--ink-soft); font-size:14.5px;}
+.exp-bullets li{margin-bottom:7px;}
+.exp-bullets li:last-child{margin-bottom:0;}
 .exp-meta{text-align:right;}
 .exp-location{font-size:14px; color:var(--ink-soft); margin-bottom:4px;}
 .exp-dates{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted);}
 @media (max-width:640px){ .exp-row{grid-template-columns:1fr;} .exp-meta{text-align:left;} }
+
+.exp-orbit{position:relative; width:100%; max-width:720px; aspect-ratio:1/1; margin:0 auto; display:none;}
+.exp-orbit-cross{position:absolute; background:var(--line-strong);}
+.exp-orbit-cross.v{left:50%; top:0; width:1px; height:100%; transform:translateX(-50%);}
+.exp-orbit-cross.h{top:50%; left:0; height:1px; width:100%; transform:translateY(-50%);}
+.exp-hub{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:112px; height:112px; border-radius:50%; background:var(--panel); border:1.5px solid var(--brass); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:2;}
+.exp-hub-num{font-family:'Fraunces',serif; font-size:26px; font-weight:500; color:var(--ink); line-height:1;}
+.exp-hub-label{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--brass-deep); margin-top:4px;}
+.exp-node{position:absolute; width:270px; background:var(--paper); border:1px solid var(--line-strong); border-radius:var(--radius); padding:16px 18px; z-index:1;}
+.exp-node.pos-top{top:0; left:50%; transform:translate(-50%,0);}
+.exp-node.pos-right{top:50%; right:0; transform:translate(0,-50%);}
+.exp-node.pos-bottom{bottom:0; left:50%; transform:translate(-50%,0);}
+.exp-node.pos-left{top:50%; left:0; transform:translate(0,-50%);}
+.exp-node-company{font-family:'Fraunces',serif; font-size:17px; font-weight:500; line-height:1.2;}
+.exp-node-role{font-family:'IBM Plex Mono',monospace; font-size:10.5px; text-transform:uppercase; letter-spacing:0.03em; color:var(--brass-deep); margin:4px 0 8px;}
+.exp-node-desc{font-size:13px; color:var(--ink-soft); margin:0 0 8px;}
+.exp-node-meta{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--muted);}
+@media (min-width:860px){ .exp-orbit{display:block;} .exp-list{display:none;} }
 
 .project{display:grid; grid-template-columns:80px 1fr; gap:28px; padding:30px 0; border-top:1px solid var(--line);}
 .project:first-of-type{border-top:1px solid var(--line-strong);}
@@ -273,53 +293,97 @@ footer.site-footer{padding:40px 0 56px;}
           <h2 class="section-title">Where I've worked</h2>
         </div>
       </div>
+
+      <div class="exp-orbit reveal">
+        <div class="exp-orbit-cross v"></div>
+        <div class="exp-orbit-cross h"></div>
+        <div class="exp-hub">
+          <div class="exp-hub-num">4</div>
+          <div class="exp-hub-label">Roles</div>
+        </div>
+        <div class="exp-node pos-top">
+          <div class="exp-node-company">Prosper Marketplace</div>
+          <div class="exp-node-role">AI Engineering Intern</div>
+          <p class="exp-node-desc">Built and hardened an AI tool-execution pipeline serving 2M+ customers with Gemini + RAG.</p>
+          <div class="exp-node-meta">San Francisco, CA &middot; Jun&ndash;Aug 2026</div>
+        </div>
+        <div class="exp-node pos-right">
+          <div class="exp-node-company">AfterQuery</div>
+          <div class="exp-node-role">Software Engineering Intern</div>
+          <p class="exp-node-desc">Designed SWE-bench-style evaluation tasks and Docker test environments for AI coding agents.</p>
+          <div class="exp-node-meta">Remote &middot; Apr&ndash;May 2026</div>
+        </div>
+        <div class="exp-node pos-bottom">
+          <div class="exp-node-company">Handshake</div>
+          <div class="exp-node-role">AI Fellow</div>
+          <p class="exp-node-desc">Built multimodal evaluation datasets probing visual reasoning in frontier AI models.</p>
+          <div class="exp-node-meta">Remote &middot; Jan&ndash;May 2026</div>
+        </div>
+        <div class="exp-node pos-left">
+          <div class="exp-node-company">San Jose State University</div>
+          <div class="exp-node-role">AI/ML Research Intern</div>
+          <p class="exp-node-desc">Medical prediction &amp; aerospace modeling research, published at IEEE, ASME &amp; AIAA.</p>
+          <div class="exp-node-meta">San Jose, CA &middot; Sep 2023&ndash;Present</div>
+        </div>
+      </div>
+
       <div class="exp-list reveal">
         <div class="exp-row">
           <div>
-            <div class="exp-company">Zipline</div>
-            <div class="exp-role">Emerging Talent Intern (Full-Time, Paid)</div>
-            <p class="exp-desc">Data analytics &amp; software engineering &mdash; data pipelines, AI optimizations, and automations.</p>
-            <div class="chips"><span class="chip">Python</span><span class="chip">SQL</span><span class="chip">Git</span><span class="chip">DBT</span><span class="chip">Data Visualization</span><span class="chip">Agentic Systems</span></div>
+            <div class="exp-company">Prosper Marketplace</div>
+            <div class="exp-role">AI Engineering Intern</div>
+            <ul class="exp-bullets">
+              <li>Worked on the tool-execution pipeline end to end, indexing corporate SOPs in Vertex AI Search, matching live user policy questions with RAG, and injecting the matched JSON tool schemas into Gemini Live sessions serving 2M+ customers.</li>
+              <li>Redesigned the pipeline to resolve tool schemas dynamically at runtime instead of hardcoding them per flow, cutting new-policy rollout time and letting the system absorb new SOPs without a rewrite.</li>
+              <li>Gated Gemini function calls behind SOP criteria in Python and red-teamed the system against prompt-injection attacks, holding unauthorized tool calls to zero across production traffic.</li>
+            </ul>
           </div>
           <div class="exp-meta">
-            <div class="exp-location">Remote &amp; San Francisco, CA</div>
-            <div class="exp-dates">Jan 2026 &ndash; Present</div>
+            <div class="exp-location">San Francisco, CA</div>
+            <div class="exp-dates">Jun &ndash; Aug 2026</div>
           </div>
         </div>
         <div class="exp-row">
           <div>
-            <div class="exp-company">Hackathons</div>
-            <div class="exp-role">Competitor</div>
-            <p class="exp-desc">Full-stack development &amp; data visualization &mdash; end-to-end product builds, technical demos, and stakeholder presentations.</p>
-            <div class="chips"><span class="chip">Python</span><span class="chip">NumPy</span><span class="chip">Java</span><span class="chip">PostgreSQL</span><span class="chip">Git</span><span class="chip">React / Node.js</span></div>
+            <div class="exp-company">AfterQuery</div>
+            <div class="exp-role">Software Engineering Intern</div>
+            <ul class="exp-bullets">
+              <li>Designed SWE-bench-style evaluation tasks for AI coding agents, building reproducible Docker test environments, reference solutions, and behavioral test harnesses for each task.</li>
+              <li>Built machine-verifiable validation workflows in Harbor and tuned task difficulty through rubric reviews and benchmarking.</li>
+            </ul>
           </div>
           <div class="exp-meta">
-            <div class="exp-location">NC, Pittsburgh, Virtual</div>
-            <div class="exp-dates">2025 &ndash; 2026</div>
+            <div class="exp-location">Remote</div>
+            <div class="exp-dates">Apr &ndash; May 2026</div>
           </div>
         </div>
         <div class="exp-row">
           <div>
-            <div class="exp-company">Patriot Holdings</div>
-            <div class="exp-role">Intern</div>
-            <p class="exp-desc">Data validation, UX review, competitor benchmarking, and cross-functional collaboration with engineering.</p>
-            <div class="chips"><span class="chip">Data Validation</span><span class="chip">SQL</span><span class="chip">Web Analytics</span><span class="chip">Competitor Analysis</span><span class="chip">Stakeholder Requirements</span></div>
+            <div class="exp-company">Handshake</div>
+            <div class="exp-role">AI Fellow</div>
+            <ul class="exp-bullets">
+              <li>Created multimodal evaluation datasets for frontier AI models, with image-based QA tasks probing visual reasoning.</li>
+              <li>Analyzed model responses to flag benchmark quality issues and fed fixes back into the evaluation workflow.</li>
+            </ul>
           </div>
           <div class="exp-meta">
-            <div class="exp-location">Florida &amp; Nevada</div>
-            <div class="exp-dates">2023 &ndash; 2025</div>
+            <div class="exp-location">Remote</div>
+            <div class="exp-dates">Jan &ndash; May 2026</div>
           </div>
         </div>
         <div class="exp-row">
           <div>
-            <div class="exp-company">Charity Buzz</div>
-            <div class="exp-role">Data Analyst</div>
-            <p class="exp-desc">Lead generation &amp; data pipeline engineering &mdash; web scraping for prospect discovery, lead analysis, and partnership qualification.</p>
-            <div class="chips"><span class="chip">Web Scraping</span><span class="chip">Data Analysis</span><span class="chip">Agile / SCRUM</span></div>
+            <div class="exp-company">San Jose State University</div>
+            <div class="exp-role">AI/ML Research Intern</div>
+            <ul class="exp-bullets">
+              <li>Researched heart failure and coronary heart disease prediction, comparing LGBM, Gradient Boosting, SVM, Logistic Regression, and Neural Network models; best model reaches 92% accuracy.</li>
+              <li>Modeled aerospace propeller efficiency in Google Colab; reduced RMSE to 0.036 and validated with F1 and ROC-AUC.</li>
+              <li>Published findings at IEEE ISCS, IEEE IS, ASME IMECE, and the AIAA Santa Clara Conference.</li>
+            </ul>
           </div>
           <div class="exp-meta">
-            <div class="exp-location">New York City</div>
-            <div class="exp-dates">2025</div>
+            <div class="exp-location">San Jose, CA</div>
+            <div class="exp-dates">Sep 2023 &ndash; Present</div>
           </div>
         </div>
       </div>
